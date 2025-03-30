@@ -9,7 +9,7 @@ on:
 
 defaults:
   run:
-    working-directory: tf_1
+    working-directory: dojo-infra
 #on:
 #  push:
 #    branches:
