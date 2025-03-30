@@ -10,14 +10,9 @@ on:
 defaults:
   run:
     working-directory: dojo-infra
-#on:
-#  push:
-#    branches:
-#      - main
 
 env:
-  env: test
-  
+  TF_VAR_env: "test"
 
 jobs:
   terraform:

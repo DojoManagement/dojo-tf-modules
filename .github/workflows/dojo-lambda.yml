@@ -16,10 +16,10 @@ defaults:
 #      - main
 
 env:
-  env: test
-  lambda_name: lambda-test
-  source_file: ./lambda_function
-  handler: lambda_function.lambda_handler
+  TF_VAR_env: "test"
+  TF_VAR_lambda_name: lambda-test
+  TF_VAR_source_file: ./lambda_function
+  TF_VAR_handler: lambda_function.lambda_handler
 
 jobs:
   terraform:
