@@ -39,8 +39,8 @@ resource "aws_iam_policy" "lambda_policy" {
           ]
           Effect   = "Allow"
           Resource = [
-            "${aws_s3_bucket.dojo_athlete.arn}",
-            "${aws_s3_bucket.dojo_athlete.arn}/*"
+            "${aws_s3_bucket.this.arn}",
+            "${aws_s3_bucket.this.arn}/*"
           ]
         },
         {
