@@ -6,6 +6,10 @@ on:
       - main
     paths:
         - "dojo-lambda/**"
+
+defaults:
+  run:
+    working-directory: tf_1
 #on:
 #  push:
 #    branches:
