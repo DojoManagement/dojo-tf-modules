@@ -3,7 +3,7 @@ name: Test for start lambdas to DOJO MANAGEMENT
 on:
   pull_request:
     branches:
-      - develop
+      - main
     paths:
         - 'dojo-lambda/*'
 #on:
