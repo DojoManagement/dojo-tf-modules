@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-        - 'dojo-infra/*'
+        - "dojo-infra/**"
 #on:
 #  push:
 #    branches:
