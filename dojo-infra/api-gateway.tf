@@ -5,6 +5,14 @@ resource "aws_api_gateway_rest_api" "api_gateway" {
 
 resource "aws_api_gateway_deployment" "api_gateway_deployment" {
   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.api_gateway.body))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_api_gateway_stage" "stage" {
