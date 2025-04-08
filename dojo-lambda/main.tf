@@ -5,7 +5,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket   = "dojo-management-tfstate"
-    key      = "dojo-infra/dojo-management-tfstate"
+    key      = "dojo-lambda/dojo-management-tfstate"
     region   = "sa-east-1"
     encrypt  = true
     skip_region_validation      = true
