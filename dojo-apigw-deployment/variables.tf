@@ -17,3 +17,8 @@ variable "env" {
   default = "stg"
   type    = string
 }
+
+variable "paths" {
+  description = "list of paths (keys) in tfstate"
+  type = list(string)
+}

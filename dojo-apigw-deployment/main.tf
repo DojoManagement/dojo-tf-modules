@@ -3,11 +3,13 @@ data "aws_api_gateway_rest_api" "api_gateway" {
 }
 
 data "terraform_remote_state" "lambda_states" {
+  for_each = {for path in var.paths : path => path }
+
   backend = "s3"
   config = {
-    bucket = "meu-tfstate"
-    key    = "lambda-aulas/terraform.tfstate"
-    region = "us-east-1"
+    bucket = "${var.project_name}-${var.env}"
+    key    = "dojo-lambda/${each.key}-tfstate"
+    region = "sa-east-1"
   }
 }
 
