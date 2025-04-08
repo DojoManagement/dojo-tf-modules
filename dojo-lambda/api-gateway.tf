@@ -25,3 +25,7 @@ resource "aws_api_gateway_integration" "this" {
   type = "AWS_PROXY"
   uri = aws_lambda_function.lambda_function.invoke_arn
 }
+
+output "route_checksum" {
+  value = sha1("${aws_api_gateway_method.this.http_method}-${aws_api_gateway_resource.this.path_part}")
+}

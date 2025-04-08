@@ -27,11 +27,6 @@ resource "aws_lambda_permission" "lambda_permission" {
   source_arn    = "${data.aws_api_gateway_rest_api.api_gateway.execution_arn}/*/*"
 }
 
-
-
-
-##################
-
 resource "aws_lambda_alias" "this" {
   name             = var.env
   description      = "Alias to ${var.env}"
