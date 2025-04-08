@@ -5,7 +5,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket   = "dojo-management-tfstate"
-    key      = "dojo-infra/${var.project_name}-${var.env}-tfstate"
+    key      = "dojo-infra/dojo-management-tfstate"
     region   = "sa-east-1"
     endpoints = {
       s3 = "https://oss.sa-east-1.prod-cloud-ocb.orange-business.com"
