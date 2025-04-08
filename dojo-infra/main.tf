@@ -7,10 +7,7 @@ terraform {
     bucket   = "dojo-management-tfstate"
     key      = "dojo-infra/dojo-management-tfstate"
     region   = "sa-east-1"
-    endpoints = {
-      s3 = "https://oss.sa-east-1.prod-cloud-ocb.orange-business.com"
-    }
-
+    encrypt  = true
     skip_region_validation      = true
     skip_credentials_validation = true
     skip_metadata_api_check     = true
