@@ -4,8 +4,8 @@ data "aws_api_gateway_rest_api" "api_gateway" {
 
 data "archive_file" "zip" {
   type        = "zip"
-  source_file = "${var.source_file}.py"
-  output_path = "${var.source_file}.zip"
+  source_dir = "${var.source_dir}"
+  output_path = "${var.source_dir}/athletemgmt.zip"
 }
 
 data "aws_iam_role" "lambda_role" {

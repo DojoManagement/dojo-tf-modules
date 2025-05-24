@@ -17,9 +17,9 @@ variable "lambda_name" {
   type = string
 }
 
-variable "source_file" {
+variable "source_dir" {
   description = "the path without extension"
-  default     = "../app/lambda_function"
+  default     = "../app"
   type        = string
 }
 
