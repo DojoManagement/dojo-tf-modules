@@ -2,28 +2,15 @@ data "aws_api_gateway_rest_api" "api_gateway" {
   name = "${var.project_name}-${var.env}-api"
 }
 
-data "terraform_remote_state" "lambda_states" {
-  for_each = {for path in var.paths : path => path }
-
-  backend = "s3"
-  config = {
-    bucket = "${var.project_name}-${var.env}"
-    key    = "dojo-lambda/${each.key}-tfstate"
-    region = "sa-east-1"
-  }
-}
-
-locals {
-  route_checksums = [
-    for s in data.terraform_remote_state.lambda_states : s.value.outputs.route_checksum
-  ]
+resource "random_id" "redeploy" {
+  byte_length = 4
 }
 
 resource "aws_api_gateway_deployment" "api_gateway_deployment" {
   rest_api_id = data.aws_api_gateway_rest_api.api_gateway.id
 
   triggers = {
-    redeployment = sha1(join(",", local.route_checksums))
+    redeployment = random_id.redeploy.hex
   }
 
   lifecycle {
