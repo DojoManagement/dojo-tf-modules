@@ -1,6 +1,6 @@
 resource "aws_lambda_function" "lambda_function" {
-  s3_bucket     = aws_s3_bucket_object.lambda_zip.bucket
-  s3_key        = aws_s3_bucket_object.lambda_zip.key
+  filename         = "lambda_package.zip"
+#  source_code_hash = data.archive_file.zip.output_base64sha256
 
   function_name = "${var.lambda_name}-${var.env}"
   role          = data.aws_iam_role.lambda_role.arn
