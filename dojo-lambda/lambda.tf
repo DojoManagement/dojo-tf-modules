@@ -1,6 +1,7 @@
 resource "aws_lambda_function" "lambda_function" {
-  filename         = data.archive_file.zip.output_path
-  source_code_hash = data.archive_file.zip.output_base64sha256
+  filename         = "lambda_package.zip"
+#  filename         = data.archive_file.zip.output_path
+#  source_code_hash = data.archive_file.zip.output_base64sha256
 
   function_name = "${var.lambda_name}-${var.env}"
   role          = data.aws_iam_role.lambda_role.arn
