@@ -14,7 +14,8 @@ resource "aws_lambda_function" "lambda_function" {
       
     content {
       variables = {
-        S3_BUCKET = data.aws_s3_bucket.this.id
+        HOME        = "/tmp"
+        S3_BUCKET   = data.aws_s3_bucket.this.id
         APP_NAME    = var.lambda_name
         APP_VERSION = var.app_version
         S3_PATH     = var.lambda_name
