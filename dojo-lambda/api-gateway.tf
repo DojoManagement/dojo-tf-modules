@@ -14,7 +14,7 @@ resource "aws_api_gateway_resource" "this" {
 
   rest_api_id = data.aws_api_gateway_rest_api.api_gateway.id
   parent_id   = data.aws_api_gateway_rest_api.api_gateway.root_resource_id
-  path_part   = each.value.path_part
+  path_part   = each.key
 }
 
 resource "aws_api_gateway_method" "this" {
