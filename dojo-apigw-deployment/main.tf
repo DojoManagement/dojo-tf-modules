@@ -12,6 +12,7 @@ resource "aws_api_gateway_deployment" "api_gateway_deployment" {
 
   triggers = {
     redeployment = random_id.redeploy.hex
+    token        = var.redeploy_token
   }
 
   lifecycle {
