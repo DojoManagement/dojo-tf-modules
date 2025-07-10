@@ -10,7 +10,7 @@ resource "aws_api_gateway_method" "this" {
   for_each = { for route in var.routes : "${route.method}#${route.path_part}" => route }
 
   rest_api_id   = data.aws_api_gateway_rest_api.api_gateway.id
-  resource_id   = aws_api_gateway_resource.this["${each.value.method}#${each.value.path_part}"].id
+  resource_id   = aws_api_gateway_resource.this["${each.value.path_part}"].id
   http_method   = each.value.method
   authorization = "NONE"
 }
