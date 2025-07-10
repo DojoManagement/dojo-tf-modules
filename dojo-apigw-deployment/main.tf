@@ -8,10 +8,7 @@ resource "random_id" "redeploy" {
 
 resource "aws_api_gateway_deployment" "api_gateway_deployment" {
   rest_api_id = data.aws_api_gateway_rest_api.api_gateway.id
-
-  triggers = {
-    redeployment = random_id.redeploy.hex
-  }
+  description = "Deploy-${random_id.redeploy.hex}"
 
   lifecycle {
     create_before_destroy = true
