@@ -31,7 +31,7 @@ resource "aws_api_gateway_resource" "this" {
     : aws_api_gateway_resource.this[each.value.parent].id
   )
 
-  path_part = element(reverse(split("/", each.key)), 0)
+  path_part = each.value.path_part
 }
 
 resource "aws_api_gateway_method" "this" {
