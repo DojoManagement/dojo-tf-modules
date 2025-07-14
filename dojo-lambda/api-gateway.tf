@@ -17,16 +17,18 @@ locals {
 }
 
 resource "aws_api_gateway_resource" "this" {
-  for_each = { for path in local.all_paths : path => path }
+  for_each = { for path in local.all_paths : path => {
+    path      = path
+    parent    = length(split("/", path)) == 1 ? null : join("/", slice(split("/", path), 0, length(split("/", path)) - 1))
+    path_part = element(reverse(split("/", path)), 0)
+  } }
 
   rest_api_id = data.aws_api_gateway_rest_api.api_gateway.id
 
   parent_id = (
-    length(split("/", each.key)) == 1
+    each.value.parent == null
     ? data.aws_api_gateway_rest_api.api_gateway.root_resource_id
-    : aws_api_gateway_resource.this[
-        join("/", slice(split("/", each.key), 0, length(split("/", each.key)) - 1))
-      ].id
+    : aws_api_gateway_resource.this[each.value.parent].id
   )
 
   path_part = element(reverse(split("/", each.key)), 0)
