@@ -45,7 +45,7 @@ resource "aws_api_gateway_integration" "this" {
   for_each = { for item in local.method_map : "${item.route}_${item.method}" => item }
 
   rest_api_id = data.aws_api_gateway_rest_api.api_gateway.id
-  resource_id = aws_api_gateway_resource.this[item.path].id
+  resource_id = aws_api_gateway_resource.this[item.route].id
   http_method = aws_api_gateway_method.this["${item.route}_${item.method}"].http_method
   integration_http_method = "POST"
   type = "AWS_PROXY"
