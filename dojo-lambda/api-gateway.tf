@@ -59,12 +59,12 @@ resource "aws_api_gateway_method" "this" {
   rest_api_id = data.aws_api_gateway_rest_api.api_gateway.id
 
   resource_id = (
-    item.route_type == "parent"
+    each.value.route_type == "parent"
     ? aws_api_gateway_resource.parent["${each.value.route}"].id
     : aws_api_gateway_resource.child["${each.value.route}"].id
   )
 
-  http_method   = item.method
+  http_method   = each.value.method
   authorization = "NONE"
 }
 
