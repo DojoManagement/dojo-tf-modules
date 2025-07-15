@@ -44,7 +44,7 @@ variable "env" {
 
 variable "routes" {
   description = "Mapeia os paths para os métodos HTTP permitidos"
-  type = map(list(string))
+  type = map(map(list(string)))
 }
 
 variable "app_version" {
