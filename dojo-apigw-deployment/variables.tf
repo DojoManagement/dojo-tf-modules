@@ -17,3 +17,8 @@ variable "env" {
   default = "stg"
   type    = string
 }
+
+variable "redeploy_token" {
+  type    = string
+  default = ""
+}

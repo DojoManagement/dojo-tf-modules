@@ -43,11 +43,8 @@ variable "env" {
 }
 
 variable "routes" {
-  type = list(object({
-    method    = string
-    path_part  = string
-  }))
-  default = []
+  description = "Mapeia os paths para os métodos HTTP permitidos"
+  type = map(map(list(string)))
 }
 
 variable "app_version" {

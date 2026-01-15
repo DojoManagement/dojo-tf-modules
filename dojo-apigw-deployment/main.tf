@@ -8,9 +8,11 @@ resource "random_id" "redeploy" {
 
 resource "aws_api_gateway_deployment" "api_gateway_deployment" {
   rest_api_id = data.aws_api_gateway_rest_api.api_gateway.id
+  description = "Deploy-${random_id.redeploy.hex}"
 
   triggers = {
     redeployment = random_id.redeploy.hex
+    token        = var.redeploy_token
   }
 
   lifecycle {

@@ -4,7 +4,7 @@ This module provides infrastructure for lambdas to the Dojo Management applicati
 
 ## Docs
 
-To update these docs, change `./doc.md` and then run `terraform-docs markdown --header-from doc.md . > README.md`.
+To update these docs, change `./doc.md` and then run `terraform-docs markdown --header-from doc.md --output-file README.md .`.
 
 ## Usage
 
@@ -22,6 +22,10 @@ module "lambda" {
   routes = [
     {
       method    = "GET"
+      path_part = "path1"
+    },
+    {
+      method    = "POST"
       path_part = "path1"
     },
     {
